@@ -13,9 +13,6 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        // Регистрация сервиса
-        builder.Services.AddSingleton<VacancyRepository>();
-
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
