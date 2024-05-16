@@ -60,5 +60,35 @@ namespace HeadHunterCloneAPI.Controllers
                 return Results.BadRequest("Вы отправили пустые данные");
             }
         }
+
+        [HttpDelete("delete/{id}")]
+        public IResult Delete(int id)
+        {
+            try
+            {
+                _vacancyRepository.Delete(id);
+
+                return Results.Ok("Успешно удалён");
+            }
+            catch (NullReferenceException exception)
+            {
+                return Results.NotFound(exception.Message);
+            }
+        }
+
+        [HttpPut("update/{id}")]
+        public IResult Update(int id, Vacancy newVacancy)
+        {
+            try
+            {
+                _vacancyRepository.Update(id, newVacancy);
+
+                return Results.Ok("Успешно обновлен");
+            }
+            catch (NullReferenceException exception)
+            {
+                return Results.NotFound(exception.Message);
+            }
+        }
     }
 }

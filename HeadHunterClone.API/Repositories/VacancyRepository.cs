@@ -12,7 +12,29 @@
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            // Логика FirstOrDefault
+            //foreach (var v in _vacancies)
+            //{
+            //    if (v.Id == id)
+            //    {
+            //        return v;
+            //    }
+            //    else
+            //    {
+            //        return null;
+            //    }
+            //}
+
+            var vacancy = _vacancies.FirstOrDefault(v => v.Id == id);
+
+            if (vacancy is not null)
+            {
+                _vacancies.Remove(vacancy);
+            }
+            else
+            {
+                throw new NullReferenceException("Вакансия по ID не была найдена");
+            }
         }
 
         public List<Vacancy> Get()
@@ -25,9 +47,30 @@
             return _vacancies.FirstOrDefault(vacancy => vacancy.Id == id);
         }
 
-        public Vacancy Update(int id, Vacancy vacancy)
+        public Vacancy Update(int id, Vacancy newVacancy)
         {
-            throw new NotImplementedException();
+            var vacancy = _vacancies.FirstOrDefault(v => v.Id == id);
+
+            if (vacancy is not null)
+            {
+                vacancy.Title = newVacancy.Title;
+                vacancy.SalaryFrom = newVacancy.SalaryFrom;
+                vacancy.SalaryTo = newVacancy.SalaryTo;
+                vacancy.SalaryCurrency = newVacancy.SalaryCurrency;
+                vacancy.CompanyLocation = newVacancy.CompanyLocation;
+                vacancy.CompanyName = newVacancy.CompanyName;   
+                vacancy.LanguageKnowledges = newVacancy.LanguageKnowledges;
+                vacancy.Requirements = newVacancy.Requirements;
+                vacancy.Responsibilities = newVacancy.Responsibilities;
+                vacancy.WorkTerms = newVacancy.WorkTerms;
+                vacancy.KeySkills = newVacancy.KeySkills;
+
+                return vacancy;
+            }
+            else
+            {
+                throw new NullReferenceException("Вакансия по id не была найдена");
+            }
         }
     }
 }
