@@ -1,4 +1,3 @@
-using HeadHunterClone.API.Repositories;
 
 internal class Program
 {
