@@ -1,4 +1,4 @@
-﻿namespace HeadHunterClone.API.Models
+﻿namespace HeadHunterCloneAPI.Models
 {
     public class Vacancy
     {
@@ -7,19 +7,14 @@
         public int SalaryFrom { get; set; }
         public int SalaryTo { get; set; }
         public string SalaryCurrency { get; set; }
-        public ExperienceLevel ExperienceLevel { get; set; }
-        public string Description { get; set; }
-        public List<string> Requirements { get; set; }
-        public List<string> WorkTerms { get; set; }
-        public List<string> Skills { get; set; }
+        public string CompanyName { get; set; }
+        public string CompanyLocation { get; set; }
+        public string Responsibilities { get; set; }
+        public string Requirements { get; set; }
 
-    }
+        public string LanguageKnowledges { get; set; }
+        public string WorkTerms { get; set; }
+        public string KeySkills { get; set; }
 
-    public enum ExperienceLevel
-    {
-        None,
-        OneThree,
-        FourSix,
-        OverSix
     }
 }
