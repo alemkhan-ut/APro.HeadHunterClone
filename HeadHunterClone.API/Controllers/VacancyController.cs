@@ -5,6 +5,8 @@ using System;
 
 namespace HeadHunterClone.API.Controllers
 {
+    // CRUD - Create Read Update Delete
+
     // path - путь (site.com/api/vacancies/5)
     // 1 query - 1 запрос (site.com/api/vacancies?id=5)
     // N query - N запрос (site.com/api/vacancies?id=5&name="alemkhan"&age=26.5)
@@ -85,7 +87,7 @@ namespace HeadHunterClone.API.Controllers
 
                 return Results.Ok("Успешно удален");
             }
-            catch (ArgumentNullException exception)
+            catch (Exception exception)
             {
                 return Results.NotFound(exception.Message);
             }
@@ -100,9 +102,9 @@ namespace HeadHunterClone.API.Controllers
 
                 return Results.Ok("Успешно обновлен");
             }
-            catch (ArgumentNullException e)
+            catch (Exception exception)
             {
-                return Results.NotFound(e.Message);
+                return Results.NotFound(exception.Message);
             }
         }
     }

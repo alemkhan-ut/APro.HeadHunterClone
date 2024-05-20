@@ -1,5 +1,5 @@
 ﻿using HeadHunterClone.API.Interfaces;
-using HeadHunterClone.API.Models;
+using HeadHunterClone.Domain.Models;
 
 namespace HeadHunterClone.API.Repositories
 {
@@ -48,7 +48,7 @@ namespace HeadHunterClone.API.Repositories
             }
             else
             {
-                throw new ArgumentNullException("Не найдена вакансия по id " + id);
+                throw new Exception("Не найдена вакансия по id " + id);
             }
         }
 
@@ -94,7 +94,7 @@ namespace HeadHunterClone.API.Repositories
             }
             else
             {
-                throw new ArgumentNullException("Мы не нашли вакансию по id " + id);
+                throw new Exception("Мы не нашли вакансию по id " + id);
             }
         }
     }

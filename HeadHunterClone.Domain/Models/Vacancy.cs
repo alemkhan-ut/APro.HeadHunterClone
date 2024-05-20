@@ -1,4 +1,4 @@
-﻿namespace HeadHunterClone.API.Models
+﻿namespace HeadHunterClone.Domain.Models
 {
     public class Vacancy
     {

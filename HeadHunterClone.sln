@@ -3,7 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeadHunterClone.API", "HeadHunterClone.API\HeadHunterClone.API.csproj", "{4EB12361-3E55-44AD-90D6-6338EEA70A67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeadHunterClone.API", "HeadHunterClone.API\HeadHunterClone.API.csproj", "{4EB12361-3E55-44AD-90D6-6338EEA70A67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8} = {8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeadHunterClone.WinForm", "HeadHunterClone.WinForm\HeadHunterClone.WinForm.csproj", "{2CF5239C-2D7C-449A-9A44-8B22C33D3C06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeadHunterClone.Console", "HeadHunterClone.Console\HeadHunterClone.Console.csproj", "{28628374-4612-47F9-86E8-B804DF331A66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeadHunterClone.Domain", "HeadHunterClone.Domain\HeadHunterClone.Domain.csproj", "{8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +24,18 @@ Global
 		{4EB12361-3E55-44AD-90D6-6338EEA70A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EB12361-3E55-44AD-90D6-6338EEA70A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EB12361-3E55-44AD-90D6-6338EEA70A67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CF5239C-2D7C-449A-9A44-8B22C33D3C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CF5239C-2D7C-449A-9A44-8B22C33D3C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CF5239C-2D7C-449A-9A44-8B22C33D3C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CF5239C-2D7C-449A-9A44-8B22C33D3C06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28628374-4612-47F9-86E8-B804DF331A66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28628374-4612-47F9-86E8-B804DF331A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28628374-4612-47F9-86E8-B804DF331A66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28628374-4612-47F9-86E8-B804DF331A66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
