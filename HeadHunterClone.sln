@@ -8,11 +8,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeadHunterClone.API", "Head
 		{8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8} = {8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeadHunterClone.WinForm", "HeadHunterClone.WinForm\HeadHunterClone.WinForm.csproj", "{2CF5239C-2D7C-449A-9A44-8B22C33D3C06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeadHunterClone.WinForm", "HeadHunterClone.WinForm\HeadHunterClone.WinForm.csproj", "{2CF5239C-2D7C-449A-9A44-8B22C33D3C06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeadHunterClone.Console", "HeadHunterClone.Console\HeadHunterClone.Console.csproj", "{28628374-4612-47F9-86E8-B804DF331A66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeadHunterClone.Console", "HeadHunterClone.Console\HeadHunterClone.Console.csproj", "{28628374-4612-47F9-86E8-B804DF331A66}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8} = {8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeadHunterClone.Domain", "HeadHunterClone.Domain\HeadHunterClone.Domain.csproj", "{8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeadHunterClone.Domain", "HeadHunterClone.Domain\HeadHunterClone.Domain.csproj", "{8DDE2AD6-9B96-4844-AE6D-3FB93B3C16E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

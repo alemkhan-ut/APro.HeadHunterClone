@@ -1,7 +1,6 @@
-﻿using HeadHunterClone.API.Models;
-using HeadHunterClone.API.Repositories;
+﻿using HeadHunterClone.API.Repositories;
+using HeadHunterClone.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace HeadHunterClone.API.Controllers
 {

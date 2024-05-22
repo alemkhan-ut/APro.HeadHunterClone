@@ -1,4 +1,4 @@
-﻿using HeadHunterClone.API.Models;
+﻿using HeadHunterClone.Domain.Models;
 
 namespace HeadHunterClone.API.Interfaces
 {
