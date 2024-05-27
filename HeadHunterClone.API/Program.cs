@@ -1,4 +1,6 @@
 using HeadHunterClone.API.Repositories;
+using HeadHunterClone.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 internal class Program
 {
@@ -7,6 +9,8 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
+
+        builder.Services.AddDbContext<ApplicationDbContext>();
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

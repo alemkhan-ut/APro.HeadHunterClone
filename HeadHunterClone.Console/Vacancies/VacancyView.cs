@@ -11,7 +11,6 @@ namespace HeadHunterClone.Console.Vacancies
         private readonly string _deleteVacancyApi = "https://localhost:7156/api/vacancies/delete";
         private readonly string _updateVacancyApi = "https://localhost:7156/api/vacancies/update";
 
-
         public async Task ShowVacanciesAsync()
         {
             var vacancies = await GetVacanciesAsync();
