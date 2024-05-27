@@ -14,6 +14,7 @@ namespace HeadHunterClone.Infrastructure.Data
             Database.EnsureCreated();
         }
 
+        // Нужно добавить base(options)
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
