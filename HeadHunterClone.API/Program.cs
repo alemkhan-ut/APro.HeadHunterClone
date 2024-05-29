@@ -21,7 +21,11 @@ internal class Program
         builder.Services.AddSwaggerGen();
 
         // Регистрация сервиса
-        builder.Services.AddSingleton<VacancyRepository>();
+        builder.Services.AddScoped<VacancyRepository>();
+
+        // Scoped 
+        // Transiet
+        // Singletom
 
         var app = builder.Build();
 

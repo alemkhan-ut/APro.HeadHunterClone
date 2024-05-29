@@ -10,9 +10,9 @@
         public string SalaryCurrency { get; set; }
         public ExperienceLevel ExperienceLevel { get; set; }
         public string Description { get; set; }
-        public List<string> Requirements { get; set; }
-        public List<string> WorkTerms { get; set; }
-        public List<string> Skills { get; set; }
+        public string Requirements { get; set; }
+        public string WorkTerms { get; set; }
+        public string Skills { get; set; }
     }
 
     public enum ExperienceLevel

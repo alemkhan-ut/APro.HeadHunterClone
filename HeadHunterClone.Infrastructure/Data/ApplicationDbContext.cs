@@ -27,21 +27,9 @@ namespace HeadHunterClone.Infrastructure.Data
                 SalaryTo = 3000,
                 SalaryCurrency = "USD",
                 Description = "This is Description 1",
-                Requirements = new List<string>()
-                {
-                    "Require 1",
-                    "Require 2",
-                    "Require 3"
-                },
-                WorkTerms = new List<string>()
-                {
-                    "Term 1",
-                    "Term 2",
-                },
-                Skills = new List<string>()
-                {
-                    "Skill 1"
-                }
+                Requirements = "Require 1, Require 2, Require 3",
+                WorkTerms = "WorkTerm 1, WorkTerm2",
+                Skills = "Skill1"
             });
         }
     }
