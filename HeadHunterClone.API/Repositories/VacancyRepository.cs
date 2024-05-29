@@ -1,50 +1,31 @@
 ﻿using HeadHunterClone.API.Interfaces;
 using HeadHunterClone.Domain.Models;
+using HeadHunterClone.Infrastructure.Data;
 
 namespace HeadHunterClone.API.Repositories
 {
     //Обязанность конторолировать данные вакансий - Создать, Редактировать, Удолять, Считывать
     public class VacancyRepository : IRepository
     {
-        private List<Vacancy> _vacansies = new List<Vacancy>()
+        private readonly ApplicationDbContext dbContext;
+
+        public VacancyRepository(ApplicationDbContext dbContext)
         {
-            new Vacancy()
-            {
-                Title = "Title 1",
-                SalaryFrom = 1000,
-                SalaryTo = 3000,
-                SalaryCurrency = "USD",
-                Description = "This is Description 1",
-                Requirements = new List<string>()
-                {
-                    "Require 1",
-                    "Require 2",
-                    "Require 3"
-                },
-                WorkTerms = new List<string>()
-                {
-                    "Term 1",
-                    "Term 2",
-                },
-                Skills = new List<string>()
-                {
-                    "Skill 1"
-                }
-            }
-        };
+            this.dbContext = dbContext;
+        }
 
         public void Create(Vacancy vacancy)
         {
-            _vacansies.Add(vacancy);
+            dbContext.Vacancies.Add(vacancy);
         }
 
         public void Delete(int id)
         {
-            var vacancy = _vacansies.FirstOrDefault(x => x.Id == id);
+            var vacancy = dbContext.Vacancies.FirstOrDefault(x => x.Id == id);
 
             if (vacancy is not null)
             {
-                _vacansies.Remove(vacancy);
+                dbContext.Vacancies.Remove(vacancy);
             }
             else
             {
@@ -54,7 +35,7 @@ namespace HeadHunterClone.API.Repositories
 
         public List<Vacancy> Get()
         {
-            return _vacansies;
+            return dbContext.Vacancies.ToList();
         }
 
         public Vacancy? Get(int id)
@@ -71,12 +52,12 @@ namespace HeadHunterClone.API.Repositories
             //return null;
 
             // LINQ запрос
-            return _vacansies.FirstOrDefault(v => v.Id == id);
+            return dbContext.Vacancies.FirstOrDefault(v => v.Id == id);
         }
 
         public void Update(int id, Vacancy newVacancy)
         {
-            var vacancy = _vacansies.FirstOrDefault(y => y.Id == id);
+            var vacancy = dbContext.Vacancies.FirstOrDefault(y => y.Id == id);
 
             if (vacancy is not null)
             {

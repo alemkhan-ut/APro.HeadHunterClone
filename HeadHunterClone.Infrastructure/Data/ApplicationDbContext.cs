@@ -8,16 +8,10 @@ namespace HeadHunterClone.Infrastructure.Data
         // Создание таблицы Вакансий
         public DbSet<Vacancy> Vacancies => Set<Vacancy>();
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
             // Гарантия создания БД
             Database.EnsureCreated();
-        }
-
-        // Нужно добавить base(options)
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
