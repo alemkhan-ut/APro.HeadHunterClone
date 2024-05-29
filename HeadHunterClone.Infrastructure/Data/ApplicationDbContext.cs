@@ -1,9 +1,10 @@
 ﻿using HeadHunterClone.Domain.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HeadHunterClone.Infrastructure.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         // Создание таблицы Вакансий
         public DbSet<Vacancy> Vacancies => Set<Vacancy>();

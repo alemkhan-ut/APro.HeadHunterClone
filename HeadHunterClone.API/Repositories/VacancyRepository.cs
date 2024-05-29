@@ -17,6 +17,7 @@ namespace HeadHunterClone.API.Repositories
         public void Create(Vacancy vacancy)
         {
             dbContext.Vacancies.Add(vacancy);
+            dbContext.SaveChanges();
         }
 
         public void Delete(int id)
@@ -26,6 +27,7 @@ namespace HeadHunterClone.API.Repositories
             if (vacancy is not null)
             {
                 dbContext.Vacancies.Remove(vacancy);
+                dbContext.SaveChanges();
             }
             else
             {
@@ -72,6 +74,8 @@ namespace HeadHunterClone.API.Repositories
                 vacancy.ExperienceLevel = newVacancy.ExperienceLevel;
                 vacancy.Requirements = newVacancy.Requirements;
                 vacancy.WorkTerms = newVacancy.WorkTerms;
+
+                dbContext.SaveChanges();
             }
             else
             {

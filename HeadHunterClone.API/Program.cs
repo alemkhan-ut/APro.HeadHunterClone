@@ -1,6 +1,8 @@
 using HeadHunterClone.API.Repositories;
 using HeadHunterClone.Infrastructure.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 internal class Program
 {
@@ -12,20 +14,32 @@ internal class Program
 
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
         {
-            options.UseSqlServer("DefaultConnection");
+            options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Local_HHCloneDB;Trusted_Connection=True;MultipleActiveResultSets=true");
         });
+
+        // TODO: Дополнить Identity
+        builder.Services.AddDefaultIdentity<>();
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        // Аутентификация
+        // ==============
+        // JWT-token
+        // Cookie
+
+        builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+        // Авторизация
+        builder.Services.AddAuthorization();
+
         // Регистрация сервиса
         builder.Services.AddScoped<VacancyRepository>();
 
         // Scoped 
         // Transiet
-        // Singletom
+
 
         var app = builder.Build();
 
@@ -38,7 +52,10 @@ internal class Program
 
         app.UseHttpsRedirection();
 
+        app.UseAuthentication();
         app.UseAuthorization();
+
+        app.UseStaticFiles();
 
         app.MapControllers();
 
