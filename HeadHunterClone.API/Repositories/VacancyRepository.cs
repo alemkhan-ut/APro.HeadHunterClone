@@ -14,8 +14,22 @@ namespace HeadHunterClone.API.Repositories
             this.dbContext = dbContext;
         }
 
-        public void Create(Vacancy vacancy)
+        public void Create(CreateVacancyDto vacancyDto)
         {
+            // mapping
+            var vacancy = new Vacancy()
+            {
+                Title = vacancyDto.Title,
+                Description = vacancyDto.Description,
+                ExperienceLevel = vacancyDto.ExperienceLevel,
+                SalaryCurrency = vacancyDto.SalaryCurrency,
+                SalaryFrom = vacancyDto.SalaryFrom,
+                SalaryTo = vacancyDto.SalaryTo,
+                Skills = vacancyDto.Skills,
+                Requirements = vacancyDto.Requirements,
+                WorkTerms = vacancyDto.WorkTerms,
+            };
+
             dbContext.Vacancies.Add(vacancy);
             dbContext.SaveChanges();
         }

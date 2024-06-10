@@ -1,5 +1,6 @@
 ﻿using HeadHunterClone.API.Repositories;
 using HeadHunterClone.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HeadHunterClone.API.Controllers
@@ -63,7 +64,8 @@ namespace HeadHunterClone.API.Controllers
         }
 
         [HttpPost("create")]
-        public IResult Create([FromForm] Vacancy vacancy)
+        [Authorize(Roles = "Employer")]
+        public IResult Create([FromForm] CreateVacancyDto vacancy)
         {
             if (vacancy is not null)
             {
@@ -78,6 +80,7 @@ namespace HeadHunterClone.API.Controllers
         }
 
         [HttpDelete("delete/{id}")]
+        [Authorize(Roles = "Employer")]
         public IResult Delete(int id)
         {
             try
@@ -93,6 +96,7 @@ namespace HeadHunterClone.API.Controllers
         }
 
         [HttpPut("update/{id}")]
+        [Authorize(Roles = "Employer")]
         public IResult Update(int id, [FromBody] Vacancy vacancy)
         {
             try

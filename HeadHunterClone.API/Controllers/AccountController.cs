@@ -10,16 +10,21 @@ namespace HeadHunterClone.API.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         // localhost/api/account/register?email=alemkhja@gmail&password=23123&confirm
         [HttpPost("register")]
-        public async Task<IResult> Register(string email, string password, string confirmPassword)
+        public async Task<IResult> Register(string email, string password, string confirmPassword, string role = "Employee")
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
             {
@@ -41,6 +46,8 @@ namespace HeadHunterClone.API.Controllers
 
             if (registerResult.Succeeded)
             {
+                await _userManager.AddToRoleAsync(newUser, role);
+
                 await _signInManager.SignInAsync(newUser, false);
 
                 return Results.Ok("Пользователь успешно создан под ID: " + newUser.Id);
