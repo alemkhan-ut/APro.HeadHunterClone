@@ -8,6 +8,7 @@ namespace HeadHunterClone.Infrastructure.Data
     {
         // Создание таблицы Вакансий
         public DbSet<Vacancy> Vacancies => Set<Vacancy>();
+        public DbSet<Company> Companies => Set<Company>();
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

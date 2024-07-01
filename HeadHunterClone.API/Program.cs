@@ -39,12 +39,18 @@ internal class Program
 
         // Регистрация сервиса
         builder.Services.AddScoped<VacancyRepository>();
+        builder.Services.AddScoped<CompanyRepository>();
 
         // Scoped 
         // Transiet
 
 
         var app = builder.Build();
+
+        app.UseCors(policy =>
+        {
+            policy.AllowAnyOrigin();
+        });
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
