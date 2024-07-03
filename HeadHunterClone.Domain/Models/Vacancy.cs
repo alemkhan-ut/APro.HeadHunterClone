@@ -5,6 +5,8 @@
         // Primary Key [PK]
         public int Id { get; set; }
         public string Title { get; set; }
+        public int? CompanyId { get; set; }
+        public Company Company { get; set; }
         public int SalaryFrom { get; set; }
         public int SalaryTo { get; set; }
         public string SalaryCurrency { get; set; }

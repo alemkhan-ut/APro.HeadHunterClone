@@ -1,7 +1,5 @@
 ﻿using HeadHunterClone.Domain.Models;
 using HeadHunterClone.Infrastructure.Data;
-using Microsoft.AspNetCore.Mvc;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace HeadHunterClone.API.Repositories
 {
@@ -18,5 +16,22 @@ namespace HeadHunterClone.API.Repositories
         {
             return _dbContext.Companies.ToList();
         }
+        public void Create(CreateCompanyDto companyDto)
+        {
+            // mapping
+            var company = new Company()
+            {
+
+                Name = companyDto.Name,
+                Description = companyDto.Description,
+                DateOfRegistration = companyDto.DateOfRegistration,
+
+            };
+
+            _dbContext.Companies.Add(company);
+            _dbContext.SaveChanges();
+        }
     }
 }
+
+

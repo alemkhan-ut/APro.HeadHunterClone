@@ -1,8 +1,11 @@
 ﻿using HeadHunterClone.API.Repositories;
+using HeadHunterClone.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HeadHunterClone.API.Controllers
 {
+    [ApiController]
+    [Route("api/companies")]
     public class CompanyController
     {
         private readonly CompanyRepository _companyRepository;
@@ -31,6 +34,21 @@ namespace HeadHunterClone.API.Controllers
             else
             {
                 return Results.NotFound("Вакансии сейчас нет");
+            }
+
+        }
+        [HttpPost("create")]
+        public IResult Create([FromForm] CreateCompanyDto company)
+        {
+            if (company is not null)
+            {
+                _companyRepository.Create(company);
+                return Results.Ok("Вакансия добавлена");
+
+            }
+            else
+            {
+                return Results.BadRequest("Пришла пустая модель");
             }
         }
     }
