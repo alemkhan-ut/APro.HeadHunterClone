@@ -1,9 +1,10 @@
-using HeadHunterClone.API.Repositories;
+п»їusing HeadHunterClone.API.Repositories;
 using HeadHunterClone.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using HeadHunterClone.API.Controllers;
 
 internal class Program
 {
@@ -18,7 +19,7 @@ internal class Program
             options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Local_HHCloneDB;Trusted_Connection=True;MultipleActiveResultSets=true");
         });
 
-        // TODO: Дополнить Identity
+        // TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Identity
         builder.Services
             .AddIdentity<ApplicationUser, IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -28,16 +29,16 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        // Аутентификация
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         // ==============
         // JWT-token
         // Cookie
 
         builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-        // Авторизация
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         builder.Services.AddAuthorization();
 
-        // Регистрация сервиса
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         builder.Services.AddScoped<VacancyRepository>();
         builder.Services.AddScoped<CompanyRepository>();
 

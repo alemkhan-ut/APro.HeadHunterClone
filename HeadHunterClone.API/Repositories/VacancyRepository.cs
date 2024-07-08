@@ -4,7 +4,7 @@ using HeadHunterClone.Infrastructure.Data;
 
 namespace HeadHunterClone.API.Repositories
 {
-    //Обязанность конторолировать данные вакансий - Создать, Редактировать, Удолять, Считывать
+    //Обязанность конторолировать данные вакансий - Создать, Редактировать, Удалять, Считывать
     public class VacancyRepository : IRepository
     {
         private readonly ApplicationDbContext dbContext;

@@ -35,8 +35,8 @@ namespace HeadHunterClone.API.Controllers
             {
                 return Results.NotFound("Вакансии сейчас нет");
             }
-
         }
+
         [HttpPost("create")]
         public IResult Create([FromForm] CreateCompanyDto company)
         {

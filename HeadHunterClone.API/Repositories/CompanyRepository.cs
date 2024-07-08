@@ -16,6 +16,7 @@ namespace HeadHunterClone.API.Repositories
         {
             return _dbContext.Companies.ToList();
         }
+
         public void Create(CreateCompanyDto companyDto)
         {
             // mapping
