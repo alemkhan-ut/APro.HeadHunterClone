@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HeadHunterClone.Domain.Models
 {
-    public class Company
+    public class CompanyDto
     {
-        public int Id { get; set; }
+        
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime DateOfRegistration { get; set; }

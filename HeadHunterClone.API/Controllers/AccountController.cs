@@ -13,16 +13,15 @@ namespace HeadHunterClone.API.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
 
         public AccountController(
-            UserManager<ApplicationUser> userManager,
+            UserManager<ApplicationUser> userManager, 
             SignInManager<ApplicationUser> signInManager,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole>roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _roleManager = roleManager;
+             _roleManager = roleManager;
         }
 
-        // localhost/api/account/register?email=alemkhja@gmail&password=23123&confirm
         [HttpPost("register")]
         public async Task<IResult> Register(string email, string password, string confirmPassword, string role = "Employee")
         {
@@ -30,10 +29,9 @@ namespace HeadHunterClone.API.Controllers
             {
                 throw new ArgumentNullException("Некоторые данные пришли пустые");
             }
-
             if (password != confirmPassword)
             {
-                throw new ArgumentException("Пароли не совпадают");
+                throw new ArgumentException("Пароли не совпадает");
             }
 
             ApplicationUser newUser = new ApplicationUser()
@@ -48,7 +46,7 @@ namespace HeadHunterClone.API.Controllers
             {
                 await _userManager.AddToRoleAsync(newUser, role);
 
-                await _signInManager.SignInAsync(newUser, false);
+                await _signInManager.SignInAsync(newUser,  false);
 
                 return Results.Ok("Пользователь успешно создан под ID: " + newUser.Id);
             }
@@ -96,19 +94,21 @@ namespace HeadHunterClone.API.Controllers
             }
         }
 
+
         [HttpGet("users")]
         public IResult Users()
         {
-            var users = _userManager.Users.ToList();
-
+            var users =_userManager.Users.ToList();
             if (users.Any())
             {
                 return Results.Ok(users);
             }
             else
             {
-                return Results.NotFound("Пользователи не найдены");
-            }
+                return Results.NotFound();
+            };
         }
+               
+
     }
 }

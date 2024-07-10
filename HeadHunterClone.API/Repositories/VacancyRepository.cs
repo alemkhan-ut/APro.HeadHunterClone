@@ -4,44 +4,44 @@ using HeadHunterClone.Infrastructure.Data;
 
 namespace HeadHunterClone.API.Repositories
 {
-    //Обязанность конторолировать данные вакансий - Создать, Редактировать, Удалять, Считывать
+
+    //Обязанность контролировать данные вакансий - Создавать, Редактировать, Удалять, Считывать
     public class VacancyRepository : IRepository
     {
         private readonly ApplicationDbContext dbContext;
 
+        
         public VacancyRepository(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        public void Create(CreateVacancyDto vacancyDto)
+        public void Create(VacancyDto vacancyDto)
         {
-            // mapping
+
             var vacancy = new Vacancy()
             {
                 Title = vacancyDto.Title,
                 Description = vacancyDto.Description,
-                ExperienceLevel = vacancyDto.ExperienceLevel,
                 SalaryCurrency = vacancyDto.SalaryCurrency,
                 SalaryFrom = vacancyDto.SalaryFrom,
                 SalaryTo = vacancyDto.SalaryTo,
                 Skills = vacancyDto.Skills,
+                ExperienceLevel = vacancyDto.ExperienceLevel,
                 Requirements = vacancyDto.Requirements,
                 WorkTerms = vacancyDto.WorkTerms,
-            };
-
+        };
             dbContext.Vacancies.Add(vacancy);
             dbContext.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            var vacancy = dbContext.Vacancies.FirstOrDefault(x => x.Id == id);
-
-            if (vacancy is not null)
+           var vacancy = dbContext.Vacancies.FirstOrDefault(x=> x.Id == id);
+            if (vacancy != null)
             {
                 dbContext.Vacancies.Remove(vacancy);
-                dbContext.SaveChanges();
+                dbContext.SaveChanges() ;
             }
             else
             {
@@ -56,29 +56,27 @@ namespace HeadHunterClone.API.Repositories
 
         public Vacancy? Get(int id)
         {
-            // Standart запрос
-            //foreach (var vacancy in _vacansies)
-            //{
-            //    if (vacancy.Id == id)
-            //    {
-            //        return vacancy;
-            //    }
-            //}
-
+            // Standart запрос 
+            //foreach (var vacancy in _vacansies) 
+            //{ //    if (vacancy.Id == id) //
+            //{ 
+            //        return vacancy; 
+            //    } 
+            //} 
             //return null;
 
-            // LINQ запрос
+            //Linq запрос
             return dbContext.Vacancies.FirstOrDefault(v => v.Id == id);
         }
 
         public void Update(int id, Vacancy newVacancy)
         {
-            var vacancy = dbContext.Vacancies.FirstOrDefault(y => y.Id == id);
+            var vacancy = dbContext.Vacancies.FirstOrDefault( y => y.Id == id);
 
-            if (vacancy is not null)
+            if (vacancy != null)
             {
-                // Изменение а не создание обьекта
 
+                vacancy.Id = newVacancy.Id;
                 vacancy.Title = newVacancy.Title;
                 vacancy.Description = newVacancy.Description;
                 vacancy.SalaryCurrency = newVacancy.SalaryCurrency;
@@ -89,12 +87,18 @@ namespace HeadHunterClone.API.Repositories
                 vacancy.Requirements = newVacancy.Requirements;
                 vacancy.WorkTerms = newVacancy.WorkTerms;
 
-                dbContext.SaveChanges();
+
+                dbContext.SaveChanges();   
+
+                
+                 
             }
-            else
-            {
-                throw new Exception("Мы не нашли вакансию по id " + id);
+            else 
+            { 
+                throw new Exception("Мы не нашли вакансию по id" + id); 
             }
         }
+
+        
     }
 }

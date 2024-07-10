@@ -2,25 +2,30 @@
 {
     public class Vacancy
     {
-        // Primary Key [PK]
+        //Primary Key [PK]
         public int Id { get; set; }
         public string Title { get; set; }
-        public int? CompanyId { get; set; }
+
+        public int ? CompanyId { get; set; } 
         public Company Company { get; set; }
+
         public int SalaryFrom { get; set; }
         public int SalaryTo { get; set; }
-        public string SalaryCurrency { get; set; }
-        public ExperienceLevel ExperienceLevel { get; set; }
+        public string SalaryCurrency {  get; set; }
+        
+        public  ExperienceLevel ExperienceLevel {  get; set; }
+
         public string Description { get; set; }
         public string Requirements { get; set; }
-        public string WorkTerms { get; set; }
-        public string Skills { get; set; }
+        public string  WorkTerms { get; set; }
+        public string Skills { get; set; }   
+
     }
 
     public enum ExperienceLevel
     {
-        None,
-        OneThree,
+        None, 
+        OneThree, 
         FourSix,
         OverSix
     }

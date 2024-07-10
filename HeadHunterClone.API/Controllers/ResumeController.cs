@@ -9,16 +9,16 @@ using Microsoft.AspNetCore.Mvc;
 namespace HeadHunterClone.API.Controllers
 {
     [ApiController]
-    [Route("api/companies")]
+    [Route("api/resumes")]
 
-    public class CompanyController : Controller
+    public class ResumeController : Controller
     {
 
-        private readonly CompanyRepository _companyRepository;
+        private readonly ResumeRepository _resumeRepository;
 
-        public CompanyController(CompanyRepository companyRepository)
+        public ResumeController(ResumeRepository resumeRepository)
         {
-            _companyRepository = companyRepository;
+            _resumeRepository = resumeRepository;
         }
 
 
@@ -26,33 +26,33 @@ namespace HeadHunterClone.API.Controllers
 
         public IResult Get()
         {
-            var companies = _companyRepository.Get();
+            var resumes = _resumeRepository.Get();
 
-            if (companies is not null)
+            if (resumes is not null)
             {
-                if (companies.Count > 0)
+                if (resumes.Count > 0)
                 {
-                    return Results.Ok(companies);
+                    return Results.Ok(resumes);
                 }
                 else
                 {
-                    return Results.NotFound("Компании сейчас нет");
+                    return Results.NotFound("резюме сейчас нет");
                 }
             }
             else
             {
-                return Results.NotFound("Компания не найдена");
+                return Results.NotFound("резюме не найдена");
             }
         }
         [HttpPost("Create")]
 
-        public IResult Create([FromForm] CompanyDto company)
+        public IResult Create([FromForm] ResumeDto resume)
         {
-            if (company is not null)
+            if (resume is not null)
             {
-                _companyRepository.Create(company);
+                _resumeRepository.Create(resume);
 
-                return Results.Ok("Компания добавлена");
+                return Results.Ok("резюме добавлена");
             }
             else
             {
@@ -63,12 +63,12 @@ namespace HeadHunterClone.API.Controllers
         }
 
         [HttpPut("update/{id}")]
-        
-        public IResult Update(int id, [FromBody] Company company)
+
+        public IResult Update(int id, [FromBody] Resume resume)
         {
             try
             {
-                _companyRepository.Update(id, company);
+                _resumeRepository.Update(id, resume);
                 return Results.Ok("Успешно обновлен");
             }
             catch (Exception exception)
@@ -79,13 +79,13 @@ namespace HeadHunterClone.API.Controllers
         }
 
         [HttpDelete("delete/{id}")]
-        
+
         public IResult Delete(int id)
         {
 
             try
             {
-                _companyRepository.Delete(id);
+                _resumeRepository.Delete(id);
                 return Results.Ok("Успешно удален");
             }
             catch (Exception exception)
@@ -99,7 +99,7 @@ namespace HeadHunterClone.API.Controllers
         [HttpGet("{id}")]
         public IResult GetById(int id)
         {
-            var vacancy = _companyRepository.Get(id);
+            var vacancy = _resumeRepository.Get(id);
             if (vacancy is not null)
             {
                 return Results.Ok(vacancy);

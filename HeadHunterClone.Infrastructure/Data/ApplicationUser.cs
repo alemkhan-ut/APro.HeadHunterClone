@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HeadHunterClone.Infrastructure.Data
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser:IdentityUser
     {
 
     }
