@@ -10,12 +10,11 @@ namespace HeadHunterClone.Domain.Models
     public class Resume
     {
         public int Id { get; set; }
-        public string JobTitle { get; set; }   
+        public string JobTitle { get; set; }
         public string Specilization { get; set; }
-        public string Salary { get; set; }  
-        public string WorkLoad {  get; set; }
+        public string Salary { get; set; }
+        public string WorkLoad { get; set; }
         public string WorkSchedule { get; set; }
-
-
+        public string? ResumeFilePath { get; set; }
     }
 }

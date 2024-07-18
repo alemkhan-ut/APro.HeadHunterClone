@@ -17,18 +17,28 @@ namespace HeadHunterClone.API.Repositories
             return _dbContext.Resumes.ToList();
         }
 
-        public void Create(ResumeDto resumeDto)
+        public async void Create(ResumeDto resumeDto)
         {
+            string uploadfilePath = string.Empty;
+
+            if (resumeDto.ResumeFile != null)
+            {
+                uploadfilePath = "/uploads/resume/" + resumeDto.ResumeFile.FileName + "_" + Guid.NewGuid();
+
+                using (var fileStream = new FileStream(uploadfilePath, FileMode.Create))
+                {
+                    await resumeDto.ResumeFile.CopyToAsync(fileStream);
+                }
+            }
 
             var resume = new Resume()
             {
-
-                JobTitle = resumeDto.JobTitle, 
+                JobTitle = resumeDto.JobTitle,
                 Specilization = resumeDto.Specilization,
                 Salary = resumeDto.Salary,
                 WorkLoad = resumeDto.WorkLoad,
                 WorkSchedule = resumeDto.WorkSchedule,
-
+                ResumeFilePath = uploadfilePath
             };
 
             _dbContext.Resumes.Add(resume);
@@ -45,7 +55,7 @@ namespace HeadHunterClone.API.Repositories
 
                 resume.JobTitle = newResume.JobTitle;
                 resume.Specilization = newResume.Specilization;
-                resume.Salary = newResume.Salary; 
+                resume.Salary = newResume.Salary;
                 resume.WorkLoad = newResume.WorkLoad;
                 resume.WorkSchedule = newResume.WorkSchedule;
 
